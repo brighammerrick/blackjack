@@ -1,0 +1,365 @@
+.blackjack {
+    max-height: 100vh;
+    max-width: 900px;
+    margin: 20px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #222;
+    background-color: #eee;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px #aaa;
+    user-select: none;
+    transition: background-color .4s, color .4s;
+    overflow-y: hidden
+}
+
+.blackjack.dark {
+    background-color: #222;
+    color: #eee;
+    box-shadow: 0 0 10px #000
+}
+
+.toggle-theme {
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+    background-color: #ddd;
+    color: #222;
+    transition: background-color .3s, color .3s
+}
+
+.blackjack.dark .toggle-theme {
+    background-color: #444;
+    color: #eee
+}
+
+.toggle-theme:hover {
+    background-color: #bbb
+}
+
+.blackjack.dark .toggle-theme:hover {
+    background-color: #555
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px
+}
+
+.dealer-section {
+    margin-bottom: 30px;
+    text-align: center;
+    color: inherit
+}
+
+.score {
+    font-weight: 600;
+    margin-left: 6px;
+    color: #33cc33
+}
+
+.player-hands-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap
+}
+
+@media (max-width:650px) {
+    .player-hands-container {
+        flex-direction: column;
+        gap: 10px
+    }
+}
+
+.player-hand-container {
+    background-color: rgba(0, 0, 0, .05);
+    border-radius: 10px;
+    padding: 12px;
+    min-width: 140px;
+    max-width: 180px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color .3s, background-color .3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+    color: #222
+}
+
+.blackjack.dark .player-hand-container {
+    background-color: rgba(255, 255, 255, .1);
+    color: #eee
+}
+
+.player-hand.active {
+    border-radius: 8px;
+    transition: box-shadow .2s
+}
+
+.hand {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    justify-content: center;
+    flex-wrap: nowrap
+}
+
+.card-container {
+    position: relative
+}
+
+.card {
+    position: relative;
+    width: 60px;
+    height: 90px;
+    border-radius: 8px;
+    padding: 6px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .15);
+    border: 1.5px solid #bbb;
+    color: #000;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    user-select: none;
+    cursor: default;
+    transition: transform .6s, border-color .3s
+}
+
+.blackjack.dark .card {
+    background: #fff;
+    border-color: #eee;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    color: #000
+}
+
+.card.♥,
+.card.♦ {
+    color: #c8102e
+}
+
+.card.♠,
+.card.♣ {
+    color: #000
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6px;
+    box-sizing: border-box;
+    color: inherit
+}
+
+.card-front {
+    background: #fff;
+    opacity: 1;
+    transition: opacity .3s;
+    position: relative
+}
+
+.card-back {
+    background: #003366;
+    box-shadow: inset 0 0 10px #0066cc;
+    opacity: 0;
+    transition: opacity .3s;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.card.flipped {
+    transform: scaleX(-1)
+}
+
+.card.flipped .card-front {
+    opacity: 0
+}
+
+.card.flipped .card-back {
+    opacity: 1
+}
+
+.hand-buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px
+}
+
+.hand-buttons button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #33cc33;
+    color: #222;
+    font-weight: 600;
+    user-select: none;
+    transition: background-color .3s
+}
+
+.hand-buttons button:hover:not(:disabled) {
+    background-color: #28a428
+}
+
+.hand-buttons button:disabled {
+    background-color: #999;
+    cursor: not-allowed
+}
+
+.message {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 600;
+    color: inherit
+}
+
+button:disabled {
+    background-color: #999;
+    cursor: not-allowed
+}
+
+button {
+    user-select: none
+}
+
+.deal-button {
+    margin-top: 15px;
+    padding: 8px 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    background-color: #3366cc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color .3s
+}
+
+.deal-button:hover {
+    background-color: #224499
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px
+}
+
+.chips-display {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #33cc33
+}
+
+.action-button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color .3s;
+    user-select: none
+}
+
+.action-button:hover:not(:disabled) {
+    background-color: #0056b3
+}
+
+.action-button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed
+}
+
+.bet-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px
+}
+
+.bet-input {
+    width: 120px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1.5px solid #aaa;
+    text-align: center;
+    user-select: text
+}
+
+.blackjack.dark .bet-input {
+    background-color: #333;
+    color: #eee;
+    border-color: #555
+}
+
+.bet-input:disabled {
+    background-color: #ddd;
+    cursor: not-allowed
+}
+
+.blackjack.dark .bet-input:disabled {
+    background-color: #555
+}
+
+.payout-info {
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: .9rem;
+    color: #33cc33
+}
+
+.blackjack.dark .payout-info {
+    color: #8fdda8
+}
+
+.high-score-display {
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #f0ad4e
+}
+
+.blackjack.dark .high-score-display {
+    color: #8fdda8
+}
+
+.centered-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 24px
+}
+
+.card.♥ .card-value,
+.card.♥ .card-suit,
+.card.♦ .card-value,
+.card.♦ .card-suit {
+    color: #e53935
+}
+
+.player-hand.active .card {
+    padding: 6px;
+    box-shadow: 0 0 8px 5px rgba(255, 165, 0, .333)
+}
+
+.blackjack.dark .player-hand.active .card {
+    box-shadow: 0 0 8px 5px #00ff0086
+}

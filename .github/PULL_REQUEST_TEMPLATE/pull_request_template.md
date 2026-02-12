@@ -2,7 +2,7 @@
 
 Please include a summary of the changes and the related issue. Please also include relevant motivation and context. List any dependencies that are required for this change.
 
-Fixes #(issue id if applicable)
+Fixes # (issue)
 
 ## Type of change
 
@@ -13,13 +13,11 @@ Please delete options that are not relevant.
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] This change requires a documentation update
 
-# Has This Been Tested
-- [ ] Yes
-- [ ] No
-
 # Checklist:
 
-- [ ] My code follows the guidelines of this project
 - [ ] I have performed a self-review of my code
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] I have made corresponding changes to the documentation
+- [ ] I have tested that my feature works
+
+# Additional context
